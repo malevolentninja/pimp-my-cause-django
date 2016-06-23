@@ -52,6 +52,13 @@
     // LOGO
     // ====
     
+    .logo {
+        position: absolute;
+        top: 37%;
+        left: rem-calc(25);
+        width: 13%;
+    }  
+
     // NAVIGATION
     // ==========
 
@@ -104,13 +111,13 @@
     // LOGO
     // ====
     
-    // .logo {
-    //     position: absolute;
-    //     top: 50%;
-    //     transform: translateY(-50%);
-    //     z-index: 1;
-    //     width: 15%;
-    // } 
+    .logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        width: 15%;
+    } 
     
     // NAVIGATION
     // ==========
