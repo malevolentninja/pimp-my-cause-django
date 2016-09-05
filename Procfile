@@ -1,1 +1,1 @@
-web: gunicorn pimpmycause pimpmycause.wsgi
+web: gunicorn --pythonpath pimpmycause pimpmycause.wsgi:application
