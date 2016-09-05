@@ -3,6 +3,8 @@ from pimpmycause.settings import *
 DEBUG = True
 
 SECRET_KEY = 'FAKEforDEV'
+ALLOWED_HOSTS = []
+
 
 LOGGING = {
     'version': 1,
