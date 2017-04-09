@@ -30,7 +30,7 @@ class PimpUser(AbstractEmailUser):
     name = models.CharField(max_length=24, blank=True)
     surname = models.CharField(max_length=24, blank=True)
     phone = models.CharField(max_length=15, blank=True)
-    country = CountryField(blank=True)
+    country = CountryField(default="GB", blank=True)
     city = models.CharField(max_length=85, blank=True)
     postcode = models.CharField(max_length=12, blank=True)
 

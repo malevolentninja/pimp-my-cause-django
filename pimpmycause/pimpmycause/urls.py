@@ -7,6 +7,7 @@ from django.views.generic.base import (
 from profiles.views import (
     RegistrationView,
     ActivationComplete,
+    RegistrationComplete,
     profile_update,
     profile_detail,
     logout_view,
@@ -70,14 +71,14 @@ urlpatterns = [
         name="terms_and_conditions"
     ),
     url(
+        r'^accounts/register/complete/',
+        RegistrationComplete.as_view(),
+        name='registration_complete'
+    ),
+    url(
         r'^accounts/register/',
         RegistrationView.as_view(form_class=PimpUserRegistrationForm),
         name='registration_register'
-    ),
-    url(
-        r'^accounts/registration-complete/',
-        TemplateView.as_view(template_name="registration/registration_complete.htm"),
-        name='registration_complete'
     ),
     url(
         r'^accounts/activate/complete/',

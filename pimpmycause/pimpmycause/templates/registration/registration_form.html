@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %} Register {% endblock %}
+{% load static widget_tweaks %}
 
 {% load static %}
 
@@ -10,76 +10,167 @@
                <h1 class="pnl__title">Register </h1>
                 <div class="row">
                     <div class="large-12 medium-12 small-12 columns">
-                        <form method="POST" action="{% url 'registration_register' %}">
+                        <form method="POST" action="{% url 'registration_register' %}" novalidate>
                             {% csrf_token %}
-                            {{ form.non_field_errors }}
+                            
+                            {% if form.non_field_errors %}
+                                <div class="row non-field-errors">
+                                {% for error in form.non_field_errors %}
+                                    <p class="form-error text-danger">{{ error }}</p>
+                                {% endfor %}
+                                </div>
+                            {% endif %}
 
-                            <div class="medium-6 large-6 small-12 large-centered small-centered columns">
+                            <div class="medium-8 large-8 small-12 large-centered small-centered columns">
                                 <div class="row">
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.name.errors }}
-                                        <input type="text" name="name" placeholder="First Name" required>
+                                        <div class="form-group {% if form.name.errors %} has-error {% endif %}">
+                                            {% if form.name.errors %}
+                                                {% for error in form.name.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Name</label>
+                                            <input type="text" name="name" placeholder="Sam" required>
+                                        </div>
                                     </div>
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.surname.errors }}
-                                        <input type="text" name="surname" placeholder="Surname" required>
+                                        <div class="form-group {% if form.surname.errors %} has-error {% endif %}">
+                                            {% if form.surname.errors %}
+                                                {% for error in form.surname.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Surname</label>
+                                            <input type="text" name="surname" placeholder="Jones" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.email.errors }}
-                                        <input type="email" name="email" placeholder="Email" required>
+                                        <div class="form-group {% if form.email.errors %} has-error {% endif %}">
+                                            {% if form.email.errors %}
+                                                {% for error in form.email.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Email</label>
+                                            <input type="email" name="email" placeholder="sam.jones@gmail.com" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.phone.errors }}
-                                        <input type="tel" name="phone" placeholder="Telephone" required>
+                                        <div class="form-group {% if form.phone.errors %} has-error {% endif %}">
+                                            {% if form.phone.errors %}
+                                                {% for error in form.phone.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Phone</label>
+                                            <input type="tel" name="phone" placeholder="07563267888" required>
+                                        </div>
                                     </div>
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.twitter.errors }}
-                                        <input type="url" name="twitter" placeholder="Twitter (optional)">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.country.errors }}
-                                        {{ form.country }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.city.errors }}
-                                        <input type="text" name="city" placeholder="City" required>
-                                    </div>
-                                    <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.postcode.errors }}
-                                        <input type="text" name="postcode" placeholder="Post Code" required>
+                                        <div class="form-group {% if form.twitter.errors %} has-error {% endif %}">
+                                            {% if form.twitter.errors %}
+                                                {% for error in form.twitter.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Twitter (optional)</label>
+                                            <input type="url" name="twitter" placeholder="https://twitter.com/sam.jones">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.password1.errors }}
-                                        <input type="password" name="password1" required>
-                                    </div>
-                                    <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.password2.errors }}
-                                        <input type="password" name="password2" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.position.errors }}
-                                        <input type="text" name="position" placeholder="Current Position" required>
+                                        <div class="form-group {% if form.twitter.errors %} has-error {% endif %}">
+                                            {% if form.twitter.errors %}
+                                                {% for error in form.twitter.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Country</label>
+                                            {% render_field form.country %}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="medium-6 large-6 small-12 columns">
-                                        {{ form.usertype.errors }}
-                                        <select id="id_usertype" name="usertype">
-                                            <option value="0" selected>Marketer</option>
-                                            <option value="1">Cause</option>
-                                        </select>
+                                        <div class="form-group {% if form.city.errors %} has-error {% endif %}">
+                                            {% if form.city.errors %}
+                                                {% for error in form.city.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>City</label>
+                                            <input type="text" name="city" placeholder="London" required>
+                                        </div>
+                                    </div>
+                                    <div class="medium-6 large-6 small-12 columns">
+                                        <div class="form-group {% if form.postcode.errors %} has-error {% endif %}">
+                                            {% if form.postcode.errors %}
+                                                {% for error in form.postcode.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Post Code</label>
+                                            <input type="text" name="postcode" placeholder="SE1 7TR" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="medium-6 large-6 small-12 columns">
+                                        <div class="form-group {% if form.password1.errors %} has-error {% endif %}">
+                                            {% if form.password1.errors %}
+                                                {% for error in form.password1.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Password</label>
+                                            <input type="password" name="password1" required>
+                                        </div>
+                                    </div>
+                                    <div class="medium-6 large-6 small-12 columns">
+                                        <div class="form-group {% if form.password2.errors %} has-error {% endif %}">
+                                            {% if form.password2.errors %}
+                                                {% for error in form.password2.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Password Again</label>
+                                            <input type="password" name="password2" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="medium-6 large-6 small-12 columns">
+                                        <div class="form-group {% if form.position.errors %} has-error {% endif %}">
+                                            {% if form.position.errors %}
+                                                {% for error in form.position.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>Position</label>
+                                            <input type="text" name="position" placeholder="Marketing Freelancer" required>
+                                        </div>                                     
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="medium-6 large-6 small-12 columns">
+                                        <div class="form-group {% if form.position.errors %} has-error {% endif %}">
+                                            {% if form.usertype.errors %}
+                                                {% for error in form.position.errors %}
+                                                    <p class="form-error pull-left text-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <label>I am a:</label>
+                                            <select id="id_usertype" name="usertype">
+                                                <option value="0" selected>Marketer</option>
+                                                <option value="1">Cause</option>
+                                            </select>
+                                         </div>   
                                     </div>
                                 </div>
 

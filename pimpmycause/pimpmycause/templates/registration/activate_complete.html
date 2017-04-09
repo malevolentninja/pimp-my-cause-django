@@ -6,17 +6,17 @@
 
 
 {% block main %} 
-    <div class="page-register pnl">
-		<div class="content-wrap">
-            <div class="row"> 
+    <div class="page-login pnl">
+        <div class="content-wrap">
+            <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
-               <h1 class="pnl__title">Activated</h1>
-                    <div class="large-6 large-centered columns">
-                        <p>Welcome to Pimp My Cause. Please start by filling out your profile</p>
+                    <h1 class="pnl__title">Account Activated</h1>
+                    <div class="medium-5 large-4 small-12 large-centered small-centered columns text-align-center">
+                        <p class="margin-bottom-30 text-align-center">You have now successfully activated your account. Please take a moment to fill out your profile and start browsing.</p>
                         <a href="{% url 'profile_update'%}" class="button button--primary">Go to my profile</a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>   
+        </div> 
     </div>
 {% endblock %}

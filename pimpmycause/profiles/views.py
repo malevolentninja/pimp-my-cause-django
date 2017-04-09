@@ -28,7 +28,7 @@ class RegistrationView(registration_views.RegistrationView):
 
     template_name = 'registration/registration_form.html'
     form_class = PimpUserRegistrationForm
-    success_url = 'accounts/registration-complete/'
+    success_url = 'registration_complete'
 
 
 class ActivationComplete(TemplateView):
@@ -54,7 +54,7 @@ def marketer_list(request):
     """Marketer search view."""
     marketer_list = (
         PimpUser.objects
-        .filter(usertype=PimpUser.MARKETER)
+        .filter(usertype=PimpUser.MARKETER, is_active=True)
         .order_by('-date_joined')
     )
     context = {'marketer_list': marketer_list}
@@ -68,7 +68,7 @@ def cause_list(request):
         PimpUser.objects
         .all()
         .select_related()
-        .filter(usertype=PimpUser.CAUSE)
+        .filter(usertype=PimpUser.CAUSE, is_active=True)
         .annotate(
             ads_count=Count('causeprofile__advert')
         )
