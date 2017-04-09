@@ -12,7 +12,7 @@ class Advert(models.Model):
     title = models.CharField(max_length=100, blank=True)
     description = models.TextField(max_length=1000, blank=True)
     image = S3DirectField(dest='user-profile-images', blank=True)
-    skill = models.ManyToManyField("profiles.Qualification", blank=True)
+    skill = models.ManyToManyField("profiles.Skill", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField()
     cause_profile = models.ForeignKey(

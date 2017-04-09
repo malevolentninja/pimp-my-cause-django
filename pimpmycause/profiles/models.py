@@ -88,17 +88,6 @@ class Skill(models.Model):
 
 
 @python_2_unicode_compatible
-class Qualification(models.Model):
-    name = models.CharField(max_length=32)
-    description = models.CharField(max_length=500, null=True)
-    start_date = models.DateField(null=True)
-    end_date = models.DateField(null=True)
-
-    def __str__(self):
-            return self.name
-
-
-@python_2_unicode_compatible
 class MarketerProfile(models.Model):
     profile = models.OneToOneField(
         PimpUser,
@@ -108,7 +97,7 @@ class MarketerProfile(models.Model):
     )
 
     skill = models.ManyToManyField("profiles.Skill", blank=True)
-    qualification = models.ManyToManyField("profiles.Qualification", blank=True)
+    qualification = models.CharField(max_length=1000, blank=True)
     experience = models.CharField(max_length=1000, blank=True)
     availability = models.BooleanField(default=True)
 

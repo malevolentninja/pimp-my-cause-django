@@ -44,7 +44,7 @@ class MarketerUserProfileForm(forms.ModelForm):
 
     class Meta:
         model = MarketerProfile
-        fields = ('experience', 'availability', 'qualification')
+        fields = ('experience', 'availability', 'qualification', 'skill')
 
 
 class CauseUserProfileForm(forms.ModelForm):

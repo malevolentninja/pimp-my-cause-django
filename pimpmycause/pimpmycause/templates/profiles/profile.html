@@ -94,7 +94,13 @@
                             </div>
 
                             {% if user.is_marketer  %}
+                                <div class="large-12 medium-12 small-12">                            
 
+                                    <label for="qualification">Skills Offered</label>
+                                    <p class="helptext">Please choose all that apply</p>
+                                    {{ additional_profile_form.skill }}
+                                    
+                                </div>
                                 <div class="large-12 medium-12 small-12">                            
                                     {{ additional_profile_form.experience.errors }}
                                     <label for="experience">Experience</label>
@@ -104,9 +110,8 @@
                                 <div class="large-12 medium-12 small-12">                            
 
                                     <label for="qualification">Qualifications</label>
-                                    <p class="helptext">Please choose all that apply</p>
-                                    {{ additional_profile_form.qualification }}
-                                    
+                                    <textarea name="qualification" rows="10" required placeholder="Your Qualifications: university degrees and other formal training">{{ additional_profile_form.qualification.value | title}}</textarea>
+
                                 </div>
                                 <div class="large-12 medium-12 small-12">                            
                                     {{ additional_profile_form.availability.errors }}

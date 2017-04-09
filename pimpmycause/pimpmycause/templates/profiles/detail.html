@@ -77,12 +77,8 @@
                                 <h2 class="text-align-left">
                                     Qualifications
                                 </h2>
-                                {% if profile_user.marketerprofile.qualification.all|length %}
-                                    <ul>
-                                        {% for skill in profile_user.qualification.skill.all %}
-                                            <li>{{ qualification | title }}</li>
-                                        {% endfor %}
-                                    </ul>
+                                {% if profile_user.marketerprofile.qualification %}
+                                    <p>{{ profile_user.marketerprofile.qualification }}</p>
                                 {% else %}
                                     <p clas="helptext">
                                         <i class="fa fa-comments-o" aria-hidden="true"></i>
